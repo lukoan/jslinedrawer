@@ -1,0 +1,31 @@
+#header {
+    display: flex;
+    justify-content: center;
+    background-color: gray;
+    font-style: oblique;
+}
+
+#main {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    background-color: gray;
+}
+
+body {
+    height: 100vh;
+    background-color: gray;
+}
+
+canvas {
+    border: 5px solid #aa0000; 
+}
+
+#bottom {
+    background-color: gray;
+    display: flex;
+    justify-content: center;
+    height: 40px;
+    padding: 5px;
+}
