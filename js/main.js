@@ -56,7 +56,7 @@ function drawLine() {
         ctx.moveTo(p.x, p.y);
 
         for (const p of points) {
-            ctx.lineTo(p.x, p.y)
+            ctx.lineTo(p.x - pointWidth/2, p.y - pointHeight/2)
         }
 
         ctx.stroke();
