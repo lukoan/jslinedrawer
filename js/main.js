@@ -11,10 +11,9 @@ const canvas = document.querySelector('canvas');
 const ctx = canvas.getContext('2d');
 
 var colorPicker = document.getElementById("colorPicker");
+var backgroundColor = colorPicker.value = '#223522'
 
 colorPicker.addEventListener("change", colorChangedAction);
-
-var backgroundColor = '#223522';
 
 function colorChangedAction(e){
     backgroundColor = e.target.value;
