@@ -10,6 +10,17 @@ let points = new Set();
 const canvas = document.querySelector('canvas');
 const ctx = canvas.getContext('2d');
 
+var colorPicker = document.getElementById("colorPicker");
+
+colorPicker.addEventListener("change", colorChangedAction);
+
+var backgroundColor = '#223522';
+
+function colorChangedAction(e){
+    backgroundColor = e.target.value;
+    console.log('backgroundColor changed to '+e.target.value);
+}
+
 let isClicked = false;
 let isDrawLine = false;
 
@@ -29,8 +40,7 @@ connectDotsButton.addEventListener("click", connectDotsAction);
 removeLinesButton.addEventListener("click", removeLinesAction);
 cleanAreaButton.addEventListener("click", cleanAreaAction);
 
-const pointWidth = 10;
-const pointHeight = 10;
+const pointRadius = 10;
 
 function resizeAction(){
     canvas.width = 0.6*window.innerWidth;
@@ -56,7 +66,7 @@ function drawLine() {
         ctx.moveTo(p.x, p.y);
 
         for (const p of points) {
-            ctx.lineTo(p.x - pointWidth/2, p.y - pointHeight/2)
+            ctx.lineTo(p.x - pointRadius/2, p.y - pointRadius/2)
         }
 
         ctx.stroke();
@@ -92,7 +102,7 @@ function keyDownAction(e) {
 }
 
 function drawBcg() {
-    ctx.fillStyle = '#223522';
+    ctx.fillStyle = backgroundColor;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
 
@@ -100,7 +110,9 @@ function drawPoint() {
     if (isClicked) {
         for (const p of points) {
             ctx.fillStyle = 'black';
-            ctx.fillRect(p.x - pointWidth, p.y - pointHeight, pointWidth, pointHeight);
+            ctx.beginPath();
+            ctx.arc(p.x - pointRadius/2, p.y - pointRadius/2, pointRadius, 0, Math.PI * 2);
+            ctx.fill();
         }
     }
 }
